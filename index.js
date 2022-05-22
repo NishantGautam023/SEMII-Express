@@ -1,7 +1,7 @@
 // console.log("Assignment 1");
 
-const { Router } = require("express");
 const express = require("express");
+const format = require("date-format")
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -14,7 +14,7 @@ app.get("/", (req,res) => {
 
 // G route
 app.get("/G", (req,res) => {
-    res.status(200).send("<h1>Get Ready for your G exam</h1>")
+    res.status(200).send(`<h1>Get Ready for your G exam ${format.asString("dd:MM:yyyy", new Date())}  </h1>`)
 })
 
 
