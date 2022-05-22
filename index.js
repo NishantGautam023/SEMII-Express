@@ -37,8 +37,11 @@ app.get("/login", (req,res) => {
 } )
 
 
-
-
+// Handle 404
+app.get("/:token", (req,res) => {
+    console.log(req.params.token)
+    res.status(404).send(`<h1>OOPS You have come to the Wrong page!!!!</h1>`)
+} )
 
 app.listen(PORT, () => {
     console.log(`Server is running at  ${PORT}`)
