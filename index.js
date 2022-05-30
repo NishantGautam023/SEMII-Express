@@ -3,12 +3,18 @@
 const express = require("express");
 const format = require("date-format")
 const app = express();
+// app.use(express.static("public"))
 const PORT = process.env.PORT || 4000;
+const path = require("path")
 
 
 // Home Page 
 app.get("/", (req,res) => {
-    res.status(200).send("<h1>Welcome to the Home Page</h1>")
+
+    // res.sendFile(path.resolve(__dirname,'public/htmls/index.html'))
+    res.sendFile('htmls/index.html', {root: 'public'});
+
+    // res.status(200).send("<h1>Welcome to the Home Page</h1>")
 })
 
 
