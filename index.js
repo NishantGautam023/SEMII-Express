@@ -9,10 +9,7 @@ app.use(express.static(path.join(__dirname, 'assets')));
 const PORT = process.env.PORT || 4000;
 
 
-const user = {
-    firstName: 'Nishant',
-    lastName: 'Gautam',
-}
+
 
 
 // Home Page 
@@ -30,8 +27,10 @@ app.get("/", (req,res) => {
 
 
 // G route
-app.get("/G", (req,res) => {
-    res.status(200).send(`<h1>Get Ready for your G exam ${format.asString("dd:MM:yyyy", new Date())}  </h1>`)
+app.get("/g", (req,res) => {
+    // res.status(200).send(`<h1>Get Ready for your G exam ${format.asString("dd:MM:yyyy", new Date())}  </h1>`)
+    res.render('pages/team')
+
    
 })
 
@@ -39,20 +38,34 @@ app.get("/G", (req,res) => {
 // G2 route
 
 app.get("/G2", (req,res) => {
-    res.status(200).send("<h1>Get Ready for your G2 exam</h1>")
+    // res.status(200).send("<h1>Get Ready for your G2 exam</h1>")
+    res.render('pages/services')
+
 })
 
 // Dashboard Route
 
 app.get("/dashboard", (req,res) => {
-    res.status(200).send("<h1>Welcome to the Dashboard </h1>")
+    // res.status(200).send("<h1>Welcome to the Dashboard </h1>")
+    res.render('pages/projects')
+
 })
 
 // Login Route
 
 app.get("/login", (req,res) => {
-    res.status(200).send("<h1>Welcome to the Login Page </h1>")
+    // res.status(200).send("<h1>Welcome to the Login Page </h1>")
+    res.render('pages/login')
+
 } )
+
+
+
+app.get("/signup", (req,res) => {
+    res.render('pages/signup')
+})
+
+
 
 
 // Handle 404
