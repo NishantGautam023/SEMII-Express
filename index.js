@@ -26,10 +26,10 @@ app.get("/", (req,res) => {
 })
 
 
-// G route
-app.get("/g", (req,res) => {
+// G1 route
+app.get("/g1", (req,res) => {
     // res.status(200).send(`<h1>Get Ready for your G exam ${format.asString("dd:MM:yyyy", new Date())}  </h1>`)
-    res.render('pages/team')
+    res.render('pages/G1')
 
    
 })
@@ -39,7 +39,7 @@ app.get("/g", (req,res) => {
 
 app.get("/G2", (req,res) => {
     // res.status(200).send("<h1>Get Ready for your G2 exam</h1>")
-    res.render('pages/services')
+    res.render('pages/G2')
 
 })
 
@@ -47,9 +47,20 @@ app.get("/G2", (req,res) => {
 
 app.get("/dashboard", (req,res) => {
     // res.status(200).send("<h1>Welcome to the Dashboard </h1>")
-    res.render('pages/projects')
+    res.render('pages/dashboard')
 
 })
+
+// G Route
+
+app.get("/G", (req,res) => {
+    // res.status(200).send("<h1>Welcome to the Dashboard </h1>")
+    res.render('pages/G')
+
+})
+
+
+
 
 // Login Route
 
