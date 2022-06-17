@@ -15,7 +15,7 @@ const app = express();
 
 const path = require("path");
 const { ppid } = require("process");
-const userModel = require("./models/userDetails");
+
 app.set("view engine", "ejs")
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(express.json())
@@ -95,9 +95,10 @@ app.get("/signup", (req,res) => {
 
 // Handling Post request
 app.post("/posts/userDetails", async (req,res) => {
+   UserModel.create(req.body, (error, usermodel) => {
+    res.render("pages/index")
     console.log(req.body)
-    await userModel.create(req.body)
-    res.redirect("/")
+   })
 })
 
 
