@@ -1,6 +1,8 @@
 // console.log("Assignment 1");
 
 const express = require("express");
+var bodyParser = require('body-parser')
+
 // const format = require("date-format")
 
 // Requring the Database before the express has been fired. 
@@ -95,11 +97,19 @@ app.get("/signup", (req,res) => {
 
 // Handling Post request
 app.post("/posts/userDetails", async (req,res) => {
-   UserModel.create(req.body, (error, usermodel) => {
-    res.render("pages/index")
+    await UserModel.create(req.body)
     console.log(req.body)
-   })
+   res.render("pages/")
 })
+
+// Displaying list of USers
+// app.get("pages/index", async(req,res) => {
+//     const usermodels = await UserModel.find({})
+//     res.render("pages/index", {
+//         usermodels: usermodels
+//     })
+   
+// })
 
 
 // Handle 404
