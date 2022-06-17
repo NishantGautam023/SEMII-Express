@@ -1,11 +1,10 @@
-// console.log("Assignment 1");
+
 
 const express = require("express");
 var bodyParser = require('body-parser')
 
-// const format = require("date-format")
 
-// Requring the Database before the express has been fired. 
+ 
 const db = require("./config/mongoose")
 
 // Start using the Schema
@@ -32,10 +31,6 @@ const PORT = process.env.PORT || 4000;
 // Home Page 
 app.get("/", (req,res) => {
 
-    // res.sendFile(path.resolve(__dirname,'public/htmls/index.html'))
-    // res.sendFile('htmls/index.html', {root: 'public'});
-
-    // res.status(200).send("<h1>Welcome to the Home Page</h1>")
 
     res.render('pages/index')
 
@@ -45,7 +40,7 @@ app.get("/", (req,res) => {
 
 // G1 route
 app.get("/g1", (req,res) => {
-    // res.status(200).send(`<h1>Get Ready for your G exam ${format.asString("dd:MM:yyyy", new Date())}  </h1>`)
+    
     res.render('pages/G1')
 
    
@@ -55,7 +50,7 @@ app.get("/g1", (req,res) => {
 // G2 route
 
 app.get("/G2", (req,res) => {
-    // res.status(200).send("<h1>Get Ready for your G2 exam</h1>")
+    
     res.render('pages/G2')
 
 })
@@ -63,7 +58,7 @@ app.get("/G2", (req,res) => {
 // Dashboard Route
 
 app.get("/dashboard", (req,res) => {
-    // res.status(200).send("<h1>Welcome to the Dashboard </h1>")
+   
     res.render('pages/dashboard')
 
 })
@@ -71,7 +66,7 @@ app.get("/dashboard", (req,res) => {
 // G Route
 
 app.get("/G", (req,res) => {
-    // res.status(200).send("<h1>Welcome to the Dashboard </h1>")
+   
     res.render('pages/G')
 
 })
