@@ -7,12 +7,17 @@ const express = require("express");
 const db = require("./config/mongoose")
 
 // Start using the Schema
-const userModel = require("./models/userDetails")
+const UserModel = require("./models/userDetails")
 
 const app = express();
+
+
+
 const path = require("path")
 app.set("view engine", "ejs")
 app.use(express.static(path.join(__dirname, 'assets')));
+app.use(express.urlencoded({extended: true}))
+
 const PORT = process.env.PORT || 4000;
 
 
@@ -83,6 +88,24 @@ app.get("/signup", (req,res) => {
     res.render('pages/signup')
 })
 
+
+
+// Display the user collection we added in the form 
+app.get("/collection", (req,res) => {
+    res.render("pages/G2")
+} )
+
+
+
+// Create a route/endpoint for collecting and sending the user inputs to our Mongo DataBase
+
+app.post("/api/userDetails", (req, res)=>{
+    const SaveUser = new UserModel(req.body)
+    SaveUser.save((error, savedUser)=>{
+        if(error) throw error
+        res.json(savedUser)
+    })
+})
 
 
 
