@@ -4,8 +4,10 @@ const express = require("express");
 // const format = require("date-format")
 
 // Requring the Database before the express has been fired. 
-
 const db = require("./config/mongoose")
+
+// Start using the Schema
+const userModel = require("./models/userDetails")
 
 const app = express();
 const path = require("path")

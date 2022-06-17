@@ -3,7 +3,7 @@ const {schema} = mongoose;
 
 // Schema Definition 
 
-const userDetailsSchema = new Schema({
+const userDetailsSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     License_No: String,
