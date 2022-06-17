@@ -5,26 +5,26 @@ const {schema} = mongoose;
 
 const userDetailsSchema = mongoose.Schema({
     firstName:{
-        type: String
-        // required: [true, "Firstname is required"]
+        type: String,
+         required: [true, "Firstname is required"]
     },
     lastName: {
-        type:String
-        // required: [true, "LastName is required"]
+        type:String,
+        required: [true, "LastName is required"]
     },
     License_No: {
-        type: String
-        // required: [true, "License Number  is required"]
+        type: String,
+        required: [true, "License Number  is required"]
     },
     Age: {
-        type: Number
-        // required: [true, "Age   is required"]
+        type: Number,
+        required: [true, "Age   is required"]
     },
 
     car_details: {
         make: String,
         model: String,
-        year: Date,
+        year: Number,
         platNo: String
     },
     

@@ -96,20 +96,23 @@ app.get("/signup", (req,res) => {
 
 
 // Handling Post request
-app.post("/posts/userDetails", async (req,res) => {
+app.post("/pages/G", async (req,res) => {
     await UserModel.create(req.body)
     console.log(req.body)
-   res.render("pages/")
+   res.render("pages/G")
 })
 
 // Displaying list of USers
-// app.get("pages/index", async(req,res) => {
-//     const usermodels = await UserModel.find({})
-//     res.render("pages/index", {
-//         usermodels: usermodels
-//     })
+app.get("pages/index", async(req,res) => {
+    const usermodels = await UserModel.find({})
+    console.log(usermodels)
+    res.render("pages/G", {
+        usermodels: usermodels
+        
+
+    })
    
-// })
+})
 
 
 // Handle 404
