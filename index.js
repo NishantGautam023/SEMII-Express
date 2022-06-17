@@ -2,6 +2,11 @@
 
 const express = require("express");
 // const format = require("date-format")
+
+// Requring the Database before the express has been fired. 
+
+const db = require("./config/mongoose")
+
 const app = express();
 const path = require("path")
 app.set("view engine", "ejs")
