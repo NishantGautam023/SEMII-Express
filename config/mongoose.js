@@ -1,7 +1,10 @@
 const mongoose = require("mongoose"); //Import the mongoose module
 
 // User creditnals of the MongoDb Atlas
-let user = 'mongodb+srv://sippy:sippy123@fullstack.nuev0j6.mongodb.net/?retryWrites=true&w=majority'
+let user = "mongodb+srv://sippy023:sippy123@cluster0.4fxxn.mongodb.net/?retryWrites=true&w=majority";
+// let user = 'mongodb+srv://sippy:sippy123@fullstack.nuev0j6.mongodb.net/?retryWrites=true&w=majority'
+
+
 
  // Set up default mongoose connection
  mongoose.connect(user, {useNewUrlParser: true, useUnifiedTopology: true});

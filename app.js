@@ -1,17 +1,11 @@
-
-
 const express = require("express");
-var bodyParser = require('body-parser')
-
-
- 
+var bodyParser = require('body-parser') 
 const db = require("./config/mongoose")
 
 // Start using the Schema
 const UserModel = require("./models/userDetails")
 
 const app = express();
-
 
 
 const path = require("path");
@@ -27,66 +21,13 @@ const PORT = process.env.PORT || 4000;
 
 
 
-
-// Home Page 
-app.get("/", (req,res) => {
-
-
-    res.render('pages/index')
-
-
-})
-
-
-// G1 route
-app.get("/g1", (req,res) => {
-    
-    res.render('pages/G1')
-
-   
-})
-
-
-// G2 route
-
-app.get("/G2", (req,res) => {
-    
-    res.render('pages/G2')
-
-})
-
-// Dashboard Route
-
-app.get("/dashboard", (req,res) => {
-   
-    res.render('pages/dashboard')
-
-})
-
-// G Route
-
-app.get("/G", (req,res) => {
-   
-    res.render('pages/G')
-
-})
-
-
-
-
-// Login Route
-
-app.get("/login", (req,res) => {
-    // res.status(200).send("<h1>Welcome to the Login Page </h1>")
-    res.render('pages/login')
-
-} )
-
-
-
-app.get("/signup", (req,res) => {
-    res.render('pages/signup')
-})
+app.use("/",require("./routes/index"))
+app.use("/g1",require("./routes/index"))
+app.use("/g2",require("./routes/index"))
+app.use("/dashboard",require("./routes/index"))
+app.use("/G",require("./routes/index"))
+app.use("/login",require("./routes/index"))
+app.use("/signup",require("./routes/index"))
 
 
 

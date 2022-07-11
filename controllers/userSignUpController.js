@@ -1,4 +1,4 @@
 module.exports.SignUpPage = function(req, res) {
-    res.render("pages/singup");
+    res.render("pages/signup");
   }
   
