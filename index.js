@@ -1,11 +1,27 @@
-// console.log("Assignment 1");
+
 
 const express = require("express");
-// const format = require("date-format")
+var bodyParser = require('body-parser')
+
+
+ 
+const db = require("./config/mongoose")
+
+// Start using the Schema
+const UserModel = require("./models/userDetails")
+
 const app = express();
-const path = require("path")
+
+
+
+const path = require("path");
+const { ppid } = require("process");
+
 app.set("view engine", "ejs")
 app.use(express.static(path.join(__dirname, 'assets')));
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
 const PORT = process.env.PORT || 4000;
 
 
@@ -15,10 +31,6 @@ const PORT = process.env.PORT || 4000;
 // Home Page 
 app.get("/", (req,res) => {
 
-    // res.sendFile(path.resolve(__dirname,'public/htmls/index.html'))
-    // res.sendFile('htmls/index.html', {root: 'public'});
-
-    // res.status(200).send("<h1>Welcome to the Home Page</h1>")
 
     res.render('pages/index')
 
@@ -28,7 +40,7 @@ app.get("/", (req,res) => {
 
 // G1 route
 app.get("/g1", (req,res) => {
-    // res.status(200).send(`<h1>Get Ready for your G exam ${format.asString("dd:MM:yyyy", new Date())}  </h1>`)
+    
     res.render('pages/G1')
 
    
@@ -38,7 +50,7 @@ app.get("/g1", (req,res) => {
 // G2 route
 
 app.get("/G2", (req,res) => {
-    // res.status(200).send("<h1>Get Ready for your G2 exam</h1>")
+    
     res.render('pages/G2')
 
 })
@@ -46,7 +58,7 @@ app.get("/G2", (req,res) => {
 // Dashboard Route
 
 app.get("/dashboard", (req,res) => {
-    // res.status(200).send("<h1>Welcome to the Dashboard </h1>")
+   
     res.render('pages/dashboard')
 
 })
@@ -54,7 +66,7 @@ app.get("/dashboard", (req,res) => {
 // G Route
 
 app.get("/G", (req,res) => {
-    // res.status(200).send("<h1>Welcome to the Dashboard </h1>")
+   
     res.render('pages/G')
 
 })
@@ -77,6 +89,25 @@ app.get("/signup", (req,res) => {
 })
 
 
+
+// Handling Post request
+app.post("/pages/G", async (req,res) => {
+    await UserModel.create(req.body)
+    console.log(req.body)
+   res.render("pages/G")
+})
+
+// Displaying list of USers
+app.get("pages/index", async(req,res) => {
+    const usermodels = await UserModel.find({})
+    console.log(usermodels)
+    res.render("pages/G", {
+        usermodels: usermodels
+        
+
+    })
+   
+})
 
 
 // Handle 404
