@@ -8,6 +8,8 @@ const gPageController = require("../controllers/gTestPageController");
 const loginPageController = require("../controllers/userSignInController");
 const signupPageController = require("../controllers/userSignUpController");
 const storeUserController = require("../controllers/storeUser");
+
+// User Sign IN 
 const logInUserController = require("../controllers/loginUser");
 
 // Ensure Router is working
@@ -22,7 +24,10 @@ router.get("/g", gPageController.gTestPage);
 router.get("/login", loginPageController.SignInPage);
 router.get("/signup", signupPageController.SignUpPage);
 router.get("/users/register", storeUserController.storeUser);
-router.post("/G2",logInUserController.logIn); // this is the post route for the login page
+
+// Sign In route
+
+router.post("/users/login",logInUserController.Userlogin); // this is the post route for the login page
 
 
 
