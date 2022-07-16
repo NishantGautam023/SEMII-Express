@@ -3,7 +3,7 @@ const validator = require("validator");
 const bcrypt = require('bcrypt');
 
 const userauthenticationSchema = new mongoose.Schema({
-    userName: {
+    username: {
         type: String,
         required: [true, "Please provide a  userName"],
         maxlength: [50, "UserName cannot be more than 25 characters"],
@@ -13,7 +13,7 @@ const userauthenticationSchema = new mongoose.Schema({
     password: { 
         type: String,
         required: [true, "Please provide a password"],
-        minlength: [8, "Password must be at least 8 characters long"],
+        minlength: [5, "Password must be at least 8 characters long"],
         select: false, // This will not show the password in the response  
     
     },
