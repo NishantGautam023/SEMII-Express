@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require('bcrypt');
 
-const authenticationSchema = new mongoose.Schema({
+const userauthenticationSchema = new mongoose.Schema({
     userName: {
         type: String,
         required: [true, "Please provide a  userName"],
@@ -32,7 +32,7 @@ const authenticationSchema = new mongoose.Schema({
 
 
 // Encypt the password before saving
-authenticationSchema.pre("save", async function (next) {
+userauthenticationSchema.pre("save", async function (next) {
     const user = this;
     if (user.isModified("password")) {
         user.password = await bcrypt.hash(user.password, 10);
@@ -43,9 +43,9 @@ authenticationSchema.pre("save", async function (next) {
 })
 
 // validate the password
-authenticationSchema.methods.isPasswordValidated = async function (password) {
+userauthenticationSchema.methods.isPasswordValidated = async function (password) {
     const user = this;
     return await bcrypt.compare(password, user.password);
 }
 
-module.exports = mongoose.model("authentication", authenticationSchema);
+module.exports = mongoose.model("authentication", userauthenticationSchema);

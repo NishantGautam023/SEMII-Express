@@ -3,14 +3,14 @@ var bodyParser = require('body-parser')
 const db = require("./config/mongoose")
 // Start using the Schema
 const UserModel = require("./models/userDetails")
-const AuthenticationModel = require("./models/authentication")
+const AuthenticationModel = require("./models/userAuthentication")
 
 const app = express();
 
 
 const path = require("path");
 const { ppid } = require("process");
-const authentication = require("./models/authentication");
+const authentication = require("./models/userAuthentication");
 
 app.set("view engine", "ejs")
 app.use(express.static(path.join(__dirname, 'assets')));
@@ -40,7 +40,9 @@ app.post("/users/register",  async (req, res) => {
             console.log(err);
             res.redirect("/");
         } else {
-            res.redirect("/");
+            console.log("User created");
+            res.render("pages/login");
+            
         }
     })
   }  ) 

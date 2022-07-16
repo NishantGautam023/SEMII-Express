@@ -1,5 +1,5 @@
 
-const User = require('../models/authentication');
+const User = require('../models/userAuthentication');
 const path = require('path');
 
 module.exports.storeUser = function(req, res) {
