@@ -7,6 +7,7 @@ const dashboardPageController = require("../controllers/dashboardPageController"
 const gPageController = require("../controllers/gTestPageController");
 const loginPageController = require("../controllers/userSignInController");
 const signupPageController = require("../controllers/userSignUpController");
+const storeUserController = require("../controllers/storeUser");
 
 // Ensure Router is working
 console.log("ROuter is working");
@@ -19,6 +20,9 @@ router.get("/dashboard", dashboardPageController.dashboardPage);
 router.get("/g", gPageController.gTestPage);
 router.get("/login", loginPageController.SignInPage);
 router.get("/signup", signupPageController.SignUpPage);
+router.get("/users/register", storeUserController.storeUser);
+
+
 
 // This will be available for the app.js file
 module.exports = router;
