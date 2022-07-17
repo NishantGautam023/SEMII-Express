@@ -8,7 +8,8 @@ module.exports.storeUser = function(req, res) {
             console.log(err);
             res.redirect("/");
         } else {
-            res.redirect("/");
+            console.log("User created");
+            res.redirect("/login");
         }
     })
   }

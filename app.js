@@ -36,7 +36,7 @@ app.use(expressSession({
 }))
 
 
-app.post('/users/login', redirectIfAuthenticated, loginUserController)
+// app.post('/users/login', redirectIfAuthenticated, loginUserController)
 
 
 
@@ -44,19 +44,7 @@ app.use(homeRoute);
 
 
 
-// In signup.ejs page, we have route as /users/register which is listening to the post request.
-app.post("/users/register",  async (req, res) => {
-    await AuthenticationModel.create(req.body, function(err, user) {
-        if (err) {
-            console.log(err);
-            res.redirect("/");
-        } else {
-            console.log("User created");
-            res.render("pages/login");
-            
-        }
-    })
-  }  ) 
+
 
 
 

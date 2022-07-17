@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/userAuthentication');
-const alert = require("alert");
+// const alert = require("alert");
 
-module.exports = (req,res) =>{
+module.exports.logInUser = function (req,res)  {
    
     
     
@@ -10,7 +10,7 @@ module.exports = (req,res) =>{
         if(user){
             bcrypt.compare(req.body.password, user.password, (error,same)=>{
                 if(same){
-                    req.session._Id = user.username;
+                    req.session._id = user.username;
                     // req.session.userType = user.role
                     console.log("Working this is ")
                     res.redirect('/dashbaord')
