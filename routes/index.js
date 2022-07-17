@@ -8,6 +8,7 @@ const gPageController = require("../controllers/gTestPageController");
 const loginPageController = require("../controllers/userSignInController");
 const signupPageController = require("../controllers/userSignUpController");
 const storeUserController = require("../controllers/storeUser");
+const redirectIfAuthenticated = require("../middleware/redirectIfAuthenticated");
 
 
 
@@ -24,7 +25,7 @@ router.get("/g1", g1PageController.g1Page);
 router.get("/g2", g2PageController.g2Page);
 router.get("/dashboard", dashboardPageController.dashboardPage);
 router.get("/g", gPageController.gTestPage);
-router.get("/login", loginPageController.SignInPage);
+router.get("/login", redirectIfAuthenticated, loginPageController.SignInPage);
 router.get("/signup", signupPageController.SignUpPage);
 router.get("/users/register", storeUserController.storeUser);
 

@@ -17,6 +17,7 @@ const userDetailsSchema = mongoose.Schema({
     License_No: {
         type: String,
         required: [true, "License Number  is required"]
+        
     },
     Age: {
         type: Number,
@@ -33,17 +34,16 @@ const userDetailsSchema = mongoose.Schema({
 });
 
 // 1)  Encrypt the License Number before saving
-userDetailsSchema.pre("save", async function (next) {
-    const user = this;
-    bcrypt.hash(user.License_No, 10, async function (err, hash) {
-        if (err) {
-            return next(err);
-        }
-        user.License_No = hash;
-        console.log(`Encrypted License is ${user.License_No}`)
-        next();
+
+
+userDetailsSchema.pre('save',function(next){
+    const user = this
+    bcrypt.hash(user.License_No, 10,(error, hash)=>{
+        user.License_No = hash
+        next()
     })
 })
+
 
 
 

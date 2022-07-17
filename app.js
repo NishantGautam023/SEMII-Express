@@ -30,11 +30,13 @@ const authMiddleware = require('./middleware/authMiddleware')
 const redirectIfAuthenticated = require('./middleware/redirectIfAuthenticated')
 
 app.use(expressSession({
-    secret: "sippy The Dog"
+    secret: "sippy The Dog",
+    resave: true,
+    saveUninitialized: true,
 }))
 
 
-app.post('/users/login',redirectIfAuthenticated,loginUserController)
+app.post('/users/login', redirectIfAuthenticated, loginUserController)
 
 
 
@@ -79,12 +81,6 @@ app.get("pages/index", async(req,res) => {
    
 })
 
-// Handling Post request for SignUp
-app.post("/pages/login", async (req,res) => {
-    await authentication.create(req.body)
-    console.log(req.body)
-   res.render("pages/login")
-})
 
 
 // Handle 404
