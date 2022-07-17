@@ -43,9 +43,10 @@ userauthenticationSchema.pre("save", async function (next) {
 })
 
 // validate the password
-userauthenticationSchema.methods.isPasswordValidated = async function (password) {
-    const user = this;
-    return await bcrypt.compare(password, user.password);
-}
+// userauthenticationSchema.methods.isPasswordValidated = async function (password) {
+//     const user = this;
+//     return await bcrypt.compare(password, user.password);
+// }
 
-module.exports = mongoose.model("authentication", userauthenticationSchema);
+const User = mongoose.model("User", userauthenticationSchema);
+module.exports = User;

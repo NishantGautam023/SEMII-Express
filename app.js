@@ -4,9 +4,13 @@ const db = require("./config/mongoose")
 // Start using the Schema
 const UserModel = require("./models/userDetails")
 const AuthenticationModel = require("./models/userAuthentication")
+const homeRoute = require("./routes/index")
+
 
 const app = express();
+app.use(express.json());
 
+const loginUserController = require('./controllers/loginUser');
 
 const path = require("path");
 const { ppid } = require("process");
@@ -21,15 +25,20 @@ const PORT = process.env.PORT || 4000;
 
 
 
+const expressSession = require('express-session')
+const authMiddleware = require('./middleware/authMiddleware')
+const redirectIfAuthenticated = require('./middleware/redirectIfAuthenticated')
 
-app.use("/",require("./routes/index"))
-app.use("/g1",require("./routes/index"))
-app.use("/g2",require("./routes/index"))
-app.use("/dashboard",require("./routes/index"))
-app.use("/G",require("./routes/index"))
-app.use("/login",require("./routes/index"))
-app.use("/signup",require("./routes/index"))
-app.use("/users/register",require("./routes/index"))
+app.use(expressSession({
+    secret: "sippy The Dog"
+}))
+
+
+app.post('/users/login',redirectIfAuthenticated,loginUserController)
+
+
+
+app.use(homeRoute);
 
 
 
